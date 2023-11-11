@@ -1,0 +1,31 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+  }
+
+  .page-item button:hover{
+    background-color: rgb(171, 203, 124);
+
+  }
+  
+  .page-item button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #e03030;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .page-item button.active {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+  }
+  

@@ -8,8 +8,32 @@ import Sidebar from './Sidebar/Sidebar';
 import Card from './components/Card';
 // database
 import products from './db/data'
+import Pagination from './Pagination/Pagination';
 
 function App() {
+
+// ----->Pagination----->
+
+const [currentPage,setCurrentPage]=useState(1)
+const recordsPerPage=8
+const lastIndex=currentPage*recordsPerPage
+const firstIndex=lastIndex-recordsPerPage
+
+const npage=Math.ceil(products.length/recordsPerPage)
+const numbers=[...Array(npage+1).keys()].slice(1)
+
+
+const handleChangePage=(term)=>{
+  setCurrentPage(term)
+
+}
+
+
+
+
+
+
+
   const[selectedCategory,setSelectedCategory]=useState(null)
 
 
@@ -19,7 +43,7 @@ function App() {
   const [sort,setSort]=useState(0)
 
 
-  
+
 
   const handleInputChange=event=>{
     setQuery(event.target.value)
@@ -82,7 +106,11 @@ function filteredData(products, selected, query, sort) {
     filteredProducts = filteredProducts.sort((a, b) => b.newPrice - a.newPrice);
   }
 
-  return filteredProducts.map(
+  const data=filteredProducts.slice(firstIndex,lastIndex)
+
+
+
+  return data.map(
     ({ img, title, star, reviews, newPrice, prevPrice }) => (
       <Card
         key={Math.random()}
@@ -97,7 +125,8 @@ function filteredData(products, selected, query, sort) {
   );
 }
 
-// ...
+
+
 
   const result=filteredData(products,selectedCategory,query,sort)
 
@@ -109,6 +138,8 @@ function filteredData(products, selected, query, sort) {
   <Nav query={query} handleInputChange={handleInputChange} onSubmit={handleSort}/>
   <Recommended handleClick={handleClick}/>
   <Products result={result}/>
+  <Pagination numbers ={numbers} currentPage={currentPage} onEdit={handleChangePage} npage={npage}/>
+
   
   
     </>

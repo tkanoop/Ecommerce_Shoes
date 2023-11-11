@@ -19,7 +19,7 @@ function Nav({ query, handleInputChange, onSubmit }) {
   }, [sort, onSubmit]);
 
   return (
-    <nav>
+    <nav className='navbar'>
       <div className="nav-container">
         <input
           type="text"
@@ -44,8 +44,8 @@ function Nav({ query, handleInputChange, onSubmit }) {
         <label htmlFor="sortingOptions">Sort by:</label>
         <select id="sortingOptions" onChange={handleSort} >
           <option value="default">Price</option>
-          <option value={1}>High To Low</option>
-          <option value={-1}>Low To High</option>
+          <option value={-1}>High To Low</option>
+          <option value={1}>Low To High</option>
         </select>
       </div>
     </nav>

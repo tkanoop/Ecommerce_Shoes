@@ -47,7 +47,7 @@ function App() {
   // ---->handle Sorting--->
   const handleSort=(term)=>{
     setSort(term)
-   console.log(typeof(sort));
+   
 
   }
 
@@ -69,7 +69,7 @@ function filteredData(products, selected, query, sort) {
         product.category === selected ||
         product.color === selected ||
         product.company === selected ||
-        product.newPrice === selected ||
+        product.newPrice ===parseInt( selected) ||
         product.title === selected
     );
   }

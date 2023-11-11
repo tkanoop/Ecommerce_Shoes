@@ -5,10 +5,10 @@ import Products from "./Products/Products";
 import Recommended from "./Recommended/Recommended";
 import Sidebar from './Sidebar/Sidebar';
 
-
+import Card from './components/Card';
 // database
 import products from './db/data'
-import Card from './components/Card';
+
 function App() {
   const[selectedCategory,setSelectedCategory]=useState(null)
 
@@ -43,6 +43,7 @@ function App() {
 
   function filteredData(products,selected,query){
     let filteredProducts=products
+    
 
     if(query){
       filteredProducts=filteredtems
@@ -57,18 +58,20 @@ function App() {
       product.newPrice===selected||
       product.title===selected))
     }
-    return filteredProducts.map((product)=>
-    <Card key={Math.random()}
-    img={product.img}
-    title={product.title}
-    star={product.star}
-    reviews={product.reviews}
-    newPrice={product.newPrice}
-    prevPrice={product.prevPrice}
 
-
-
+    console.log(products);
+    return filteredProducts.map(
+      ({img,title,star,reviews,newPrice,prevPrice})=>(
+    <Card 
+    img={img}
+    title={title}
+    star={star}
+    reviews={reviews}
+    newPrice={newPrice}
+    prevPrice={prevPrice}
     />
+    
+    )
     )
 
   }
@@ -82,6 +85,8 @@ function App() {
   <Nav query={query} handleInputChange={handleInputChange}/>
   <Recommended handleClick={handleClick}/>
   <Products result={result}/>
+  
+  
     </>
   );
 }

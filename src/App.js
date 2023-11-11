@@ -16,6 +16,11 @@ function App() {
   //--------- input filter
   const[query,setQuery]=useState("")
 
+  const [sort,setSort]=useState(0)
+
+
+  
+
   const handleInputChange=event=>{
     setQuery(event.target.value)
   }
@@ -39,50 +44,67 @@ function App() {
     setSelectedCategory(event.target.value)
   }
 
-  // whole filtering
-
-  function filteredData(products,selected,query){
-    let filteredProducts=products
-    
-
-    if(query){
-      filteredProducts=filtereditems
-    }
-
-    // Selected Filter
-    if(selected){
-      filteredProducts=filteredProducts.filter((product=>
-
-      product.category===selected||product.color===selected||
-      product.company===selected||
-      product.newPrice===selected||
-      product.title===selected))
-    }
-
-    console.log(products);
-    return filteredProducts.map(
-      ({img,title,star,reviews,newPrice,prevPrice})=>(
-    <Card 
-    img={img}
-    title={title}
-    star={star}
-    reviews={reviews}
-    newPrice={newPrice}
-    prevPrice={prevPrice}
-    />
-    
-    )
-    )
+  // ---->handle Sorting--->
+  const handleSort=(term)=>{
+    setSort(term)
+   console.log(typeof(sort));
 
   }
-  const result=filteredData(products,selectedCategory,query)
+
+  // whole filtering
+
+  // ...
+
+function filteredData(products, selected, query, sort) {
+  let filteredProducts = [...products];
+
+  if (query) {
+    filteredProducts = filtereditems;
+  }
+
+  // Selected Filter
+  if (selected) {
+    filteredProducts = filteredProducts.filter(
+      (product) =>
+        product.category === selected ||
+        product.color === selected ||
+        product.company === selected ||
+        product.newPrice === selected ||
+        product.title === selected
+    );
+  }
+
+  if (sort === 1) {
+    filteredProducts = filteredProducts.sort((a, b) => a.newPrice - b.newPrice);
+  } else if (sort === -1) {
+    filteredProducts = filteredProducts.sort((a, b) => b.newPrice - a.newPrice);
+  }
+
+  return filteredProducts.map(
+    ({ img, title, star, reviews, newPrice, prevPrice }) => (
+      <Card
+        key={Math.random()}
+        img={img}
+        title={title}
+        star={star}
+        reviews={reviews}
+        newPrice={newPrice}
+        prevPrice={prevPrice}
+      />
+    )
+  );
+}
+
+// ...
+
+  const result=filteredData(products,selectedCategory,query,sort)
 
 
 
   return (
     <>
     <Sidebar handleChange={handleChange}/>
-  <Nav query={query} handleInputChange={handleInputChange}/>
+  <Nav query={query} handleInputChange={handleInputChange} onSubmit={handleSort}/>
   <Recommended handleClick={handleClick}/>
   <Products result={result}/>
   

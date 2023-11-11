@@ -25,4 +25,28 @@ input{
     margin-left: 2rem;
     color: gray;
 }
-
+.sort-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Optional: Style for selected option */
+  select:focus {
+    outline: none;
+    border-color: #4CAF50; /* Change to your desired focus color */
+  }
+  

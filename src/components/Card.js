@@ -2,7 +2,7 @@ import { AiFillStar } from "react-icons/ai";
 import { BsFillBagHeartFill } from "react-icons/bs";
 
 function Card({img,title,star,reviews,newPrice,prevPrice}){
-  console.log(title);
+
     return (
         <div>
            <section className="card">
@@ -17,7 +17,7 @@ function Card({img,title,star,reviews,newPrice,prevPrice}){
             </section>
             <section className="card-price">
               <div className="price">
-                <del>${newPrice}</del>{prevPrice}
+                <del>{prevPrice}</del>${newPrice}
               </div>
               <div className="bag">
                 <BsFillBagHeartFill className="bag-icon" />

@@ -64,6 +64,7 @@ function App() {
     star={product.star}
     reviews={product.reviews}
     newPrice={product.newPrice}
+    prevPrice={product.prevPrice}
 
 
 
@@ -71,15 +72,16 @@ function App() {
     )
 
   }
+  const result=filteredData(products,selectedCategory,query)
 
 
 
   return (
     <>
-    <Sidebar/>
-  <Nav/>
-  <Recommended/>
-  <Products/>
+    <Sidebar handleChange={handleChange}/>
+  <Nav query={query} handleInputChange={handleInputChange}/>
+  <Recommended handleClick={handleClick}/>
+  <Products result={result}/>
     </>
   );
 }

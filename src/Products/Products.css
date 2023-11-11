@@ -13,12 +13,22 @@
     border: 2px solid rgb(240, 235, 235);
     padding: 20px;
     cursor: pointer;
-    box-shadow: 5px 5px  5px #888888
+   
+    height: 350px;
+    width: 300px;
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
     
+    
+}
+.card:hover {
+    box-shadow: 5px 5px  5px #888888;
+    transform: scale(1.05);
 }
 .card-img{
     width: 13rem;
     margin-bottom: 1rem;
+    height: 200px;
 }
 .card-title{
     margin-bottom: 1rem;

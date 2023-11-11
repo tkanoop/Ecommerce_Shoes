@@ -56,7 +56,7 @@ function App() {
   // ...
 
 function filteredData(products, selected, query, sort) {
-  let filteredProducts = [...products];
+  let filteredProducts = products
 
   if (query) {
     filteredProducts = filtereditems;
@@ -69,14 +69,16 @@ function filteredData(products, selected, query, sort) {
         product.category === selected ||
         product.color === selected ||
         product.company === selected ||
-        product.newPrice ===parseInt( selected) ||
+        product.newPrice ===parseInt(selected) ||
         product.title === selected
     );
   }
 
   if (sort === 1) {
+    console.log("sort");
     filteredProducts = filteredProducts.sort((a, b) => a.newPrice - b.newPrice);
   } else if (sort === -1) {
+    console.log("sort");
     filteredProducts = filteredProducts.sort((a, b) => b.newPrice - a.newPrice);
   }
 
@@ -88,7 +90,7 @@ function filteredData(products, selected, query, sort) {
         title={title}
         star={star}
         reviews={reviews}
-        newPrice={newPrice}
+        newPrice={parseInt(newPrice)}
         prevPrice={prevPrice}
       />
     )

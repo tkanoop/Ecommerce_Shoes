@@ -42,7 +42,7 @@ function Colors({handleChange}) {
        
         <span className='checkmark'
         style={{background:"white",border:"2px solid black"}}>
-        </span>
+        </span>White
         </label>
 
     </div>

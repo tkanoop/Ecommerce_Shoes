@@ -20,7 +20,7 @@ function App() {
     setQuery(event.target.value)
   }
 
-  const filteredtems=products.filter((product)=>
+  const filtereditems=products.filter((product)=>
   product.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase())!==-1
   
   )
@@ -46,7 +46,7 @@ function App() {
     
 
     if(query){
-      filteredProducts=filteredtems
+      filteredProducts=filtereditems
     }
 
     // Selected Filter

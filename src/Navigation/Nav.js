@@ -2,13 +2,15 @@ import './Nav.css'
 import { FiHeart } from 'react-icons/fi'
 import { AiOutlineShoppingCart, AiOutlineUserAdd } from 'react-icons/ai'
 import { useState, useEffect } from 'react'
+import {Link} from 'react-router-dom'
 
-function Nav({ query, handleInputChange, onSubmit }) {
+function Nav({ query, handleInputChange, onSubmit,wish }) {
   const [sort, setSort] = useState(null)
 
   const handleSort = (event) => {
     const selectedSort = parseInt(event.target.value, 10);
     setSort(selectedSort);
+   
   }
 
   useEffect(() => {
@@ -30,9 +32,9 @@ function Nav({ query, handleInputChange, onSubmit }) {
         />
       </div>
       <div className="profile-container">
-        <a href="#">
+      <Link to={`/wishlist/${wish}`}>
           <FiHeart className='nav-icons' />
-        </a>
+        </Link>
         <a href='#'>
           <AiOutlineShoppingCart className='nav-icons' />
         </a>
